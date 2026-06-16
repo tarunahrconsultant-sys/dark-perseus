@@ -1,62 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Superhero Power Cards</title>
+
     <style>
-        .planet-fact {
-            color: blue;
-            margin-top: 10px;
-            font-size: 20px;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4ff;
+            text-align: center;
+            padding: 30px;
         }
 
-        .planet-name {
-            font-size: 24px;
+        h1 {
+            color: #ff4d4d;
+        }
+
+        p {
+            color: #444444;
+        }
+
+        button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .hero-card {
+            background-color: white;
+            border: 3px solid #ff4d4d;
+            border-radius: 12px;
+            width: 220px;
+            padding: 18px;
+        }
+
+        .hero-name {
+            font-size: 22px;
             font-weight: bold;
-            color: black;
+            color: #222222;
         }
 
-        .card {
-            background: white;
-            border: 3px solid orange;
-            padding: 20px;
-            width: 200px;
+        .hero-power {
+            color: #0057b8;
+            font-weight: bold;
+        }
+
+        .hero-mission {
+            color: #666666;
+            font-size: 14px;
         }
     </style>
 </head>
 
 <body>
-    <H1>My Planet Cards</H1>
-    <p>use javascript class to build hero cards</p>
-    <button onclick="showhero()">show hero</button>
-    <div class="cards">
-        <div id="card1"></div>
-        <div id="card2"></div>
-        <div id="card3"></div>
-    </div>
+
+    <h1>My Superhero Power Cards</h1>
+
+    <p>
+        Click the button to create superhero objects using JavaScript classes.
+    </p>
+
+    <button onclick="showHeroes()">Show Superheroes</button>
+
+    <div class="card-container" id="heroCards"></div>
+
     <script>
-        class hero {
-            constructor(name, fact) {
-                this.name = name
-                this.fact = fact
+        // What is a Class?
+        // A class is a blueprint used to create objects.
+
+        class Superhero {
+
+            // Constructor
+            constructor(name, power, mission) {
+
+                // The this keyword stores values inside the object
+                this.name = name;
+                this.power = power;
+                this.mission = mission;
             }
-            discribe() {
-                return this.name + ": " + this.fact
+
+            // Class Method
+            describeHero() {
+                return "<div class='hero-card'>" +
+                    "<p class='hero-name'>" + this.name + "</p>" +
+                    "<p class='hero-power'>Power: " + this.power + "</p>" +
+                    "<p class='hero-mission'>Mission: " + this.mission + "</p>" +
+                    "</div>";
             }
         }
-        function showhero() {
-            let p1 = new planet("spider man", "Spider-Man is the alter ego of Peter Parker, a scientifically gifted teenager from New York who gains superhuman spider-like abilities after being bitten by a radioactive spider, dedicating his life to fighting crime while balancing the everyday struggles of ordinary life.")
-            let p2 = new planet("flash", "The Flash is the fastes man alive")
-            let p3 = new planet("deadpool", "Deadpool is a scarred, wisecracking mercenary with superhuman regenerative powers who is hyper-aware that he is a comic book character, allowing him to constantly break the fourth wall for chaotic, violent, and hilarious results.")
-            document.getElementById("card1").innerHTML = "<div class='card'><div class='planet-name'>" + p1.name + "</div>" + "<div class='planet-fact'>" + p1.discribe() + "</div></div>"
 
-            document.getElementById("card2").innerHTML = "<div class='card'><div class='planet-name'>" + p2.name + "</div>" + "<div class='planet-fact'>" + p2.discribe() + "</div></div>"
+        function showHeroes() {
 
-            document.getElementById("card3").innerHTML = "<div class='card'><div class='planet-name'>" + p3.name + "</div>" + "<div class='planet-fact'>" + p3.discribe() + "</div></div>"
+            // Creating Objects
+            let hero1 = new Superhero(
+                "Captain Code",
+                "Debugging errors",
+                "Fix broken programs and save the coding world."
+            );
+
+            let hero2 = new Superhero(
+                "Pixel Flash",
+                "Super speed design",
+                "Build colourful websites in seconds."
+            );
+
+            let hero3 = new Superhero(
+                "Logic Girl",
+                "Smart problem-solving",
+                "Use logic to solve tricky challenges."
+            );
+
+            let hero4 = new Superhero(
+                "Data Knight",
+                "Data protection",
+                "Keep important information safe."
+            );
+
+            document.getElementById("heroCards").innerHTML =
+                hero1.describeHero() +
+                hero2.describeHero() +
+                hero3.describeHero() +
+                hero4.describeHero();
         }
     </script>
+
 </body>
 
 </html>
